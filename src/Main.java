@@ -14,12 +14,29 @@ public class Main {
         falseMap.put("Jessica","Miller");
         falseMap.put("Bruce","Reges");
         falseMap.put("Hal","Perkins");
-        isUnique(trueMap);
+        isUnique(falseMap);
 
     }
     public static boolean isUnique(Map<String, String> map){
+        int count = 0;
+        boolean rez = true;
+        for (String key : map.values()){
+            String value = map.get(key);
+                if (map.containsValue(value)){
+                }
+                    count++;
+                }
+                if (count <= 2){
+                    System.out.println("is not unique");
+                    System.out.println(count);
+                    rez = false;
 
-        
-        return true;
-    }
+                }
+                if (count > 2){
+                    System.out.println("is unique");
+                    System.out.println(count);
+                    rez = true;
+                }
+                return rez;
+            }
 }
