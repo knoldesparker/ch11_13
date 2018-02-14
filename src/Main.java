@@ -6,39 +6,37 @@ public class Main {
         Map<String, String> falseMap = new HashMap<>();
         trueMap.put("Marty", "Stepp");
         trueMap.put("Stuart", "Reges");
-        trueMap.put("Jessica","Miller");
+        trueMap.put("Jessica", "Miller");
         trueMap.put("Amanda", "Camp");
         trueMap.put("Hal", "Perkins");
-        falseMap.put("Kendrick","Perkin");
-        falseMap.put("Stuart","Reges");
-        falseMap.put("Jessica","Miller");
-        falseMap.put("Bruce","Reges");
-        falseMap.put("Hal","Perkins");
+        falseMap.put("Kendrick", "Perkin");
+        falseMap.put("Stuart", "Reges");
+        falseMap.put("Jessica", "Miller");
+        falseMap.put("Bruce", "Reges");
+        falseMap.put("Hal", "Perkins");
 
-        System.out.println(isUnique(falseMap));
+        System.out.println(isUnique(trueMap));
 
     }
-    public static boolean isUnique(Map<String, String> map){
-        int count = 0;
-        boolean rez = true;
 
-        for (Map.Entry<String,String> m: map.entrySet()){
-            String value = map.get(m);
-                if (map.containsValue(m.getValue())){
-                }
-                    count++;
-                }
-                if (count <= 2){
-                    System.out.println("is not unique");
-                    System.out.println(count);
-                    rez = false;
+    public static boolean isUnique(Map<String, String> map) {
+        HashSet<String> set = new HashSet<>();
 
-                }
-                if (count < 2){
-                    System.out.println("is unique");
-                    System.out.println(count);
-                    rez = true;
-                }
-                return rez;
+        //For loop der kigger igennem vores map med entry. map.entry er et map par.
+        for (Map.Entry<String, String> m : map.entrySet()) {
+            //en if sætning der sprøg om HashSet har den value der høre til mit mapEntry
+            //Hvis der eksistere en value inde i set returere den false.
+            if (set.contains(m.getValue())) {
+                return false;
             }
+            // Hvis der ikke findes noget value i settet bliver det tilføjet
+            // Så det kan blive compared igen senere.
+            else {
+                set.add(m.getValue());
+            }
+
+
+        }
+        return true;
+    }
 }
